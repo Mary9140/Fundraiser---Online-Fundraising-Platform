@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundraiser Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        header {
+            background-color: #343a40;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        header nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        header nav a:hover {
+            text-decoration: underline;
+        }
+        .dashboard-container {
+            max-width: 900px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h2 {
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        .cause-list {
+            display: flex;
+            justify-content: space-between;
+        }
+        .cause-list li {
+            list-style: none;
+        }
+        .cause-card {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .cause-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .cause-card a {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #007bff;
+        }
+        .cause-card a:hover {
+            text-decoration: underline;
+        }
+        .cause-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Fundraiser Dashboard</h1>
+    <nav>
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </nav>
+</header>
+
+<main class="dashboard-container">
+    <h2>Welcome to Your Dashboard</h2>
+    <p>Select a cause to view donations:</p>
+    
+    <ul class="cause-list">
+        <li>
+            <div class="cause-card">
+                <img src="/static/assets/images/causes/cause-hunger.jpg" alt="Hunger and Poverty">
+                <a href="{{ url_for('view_donations', cause='hunger_poverty') }}">Hunger and Poverty</a>
+            </div>
+        </li>
+        <li>
+            <div class="cause-card">
+                <img src="/static/assets/images/causes/cause-education.jpg" alt="Education and Training">
+                <a href="{{ url_for('view_donations', cause='education_training') }}">Education and Training</a>
+            </div>
+        </li>
+        <li>
+            <div class="cause-card">
+                <img src="/static/assets/images/causes/cause-rights.jpg" alt="Human Rights">
+                <a href="{{ url_for('view_donations', cause='human_rights') }}">Human Rights</a>
+            </div>
+        </li>
+        <li>
+            <div class="cause-card">
+                <img src="/static/assets/images/causes/cause-culture.jpg" alt="Arts And Culture">
+                <a href="{{ url_for('view_donations', cause='arts_culture') }}">Arts And Culture</a>
+            </div>
+        </li>
+    </ul>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
